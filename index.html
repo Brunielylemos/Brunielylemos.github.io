@@ -21,6 +21,15 @@
             position: relative;
         }
 
+        .logo {
+            position: absolute;
+            left: 1em;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px; /* Ajuste o tamanho conforme necessário */
+            height: auto; /* Mantém a proporção */
+        }
+
         .menu-toggle {
             display: none;
             font-size: 1.5em;
@@ -176,6 +185,7 @@
 </head>
 <body>
     <header>
+    <img src="https://brunielylemos.github.io/logo.png" alt="Logo" class="logo">
         <button class="menu-toggle" onclick="toggleMenu()">☰</button>
         <h1>Bruniely Lemos</h1>
     </header>
