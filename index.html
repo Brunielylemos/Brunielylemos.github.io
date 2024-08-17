@@ -35,14 +35,16 @@
             font-size: 1.5em;
             background: none;
             border: none;
-            color: white;
+            color: transparent; /* Torna o texto transparente para exibir o gradiente */
             cursor: pointer;
             position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
+            top: 1em;
             right: 1em;
+            background: linear-gradient(to right, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #4B0082, #8B00FF);
+            -webkit-background-clip: text; /* Necessário para browsers Webkit como Chrome e Safari */
+            background-clip: text; /* Suporte para outros navegadores */
         }
-
+        
         .container {
             display: flex;
             height: calc(100vh - 120px); /* Subtraindo o tamanho do header e footer */
