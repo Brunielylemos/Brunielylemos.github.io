@@ -18,6 +18,19 @@
             color: white;
             text-align: center;
             padding: 1em 0;
+            position: relative;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5em;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            position: absolute;
+            top: 1em;
+            right: 1em;
         }
 
         .container {
@@ -25,13 +38,18 @@
             height: calc(100vh - 120px); /* Subtraindo o tamanho do header e footer */
         }
 
-        .sidebar {
+        .barra-lateral {
             background-color: #ffe4e1;
             padding: 1em;
             width: 20%;
+            transition: transform 0.3s ease;
         }
 
-        .option {
+        .barra-lateral-fechada {
+            transform: translateX(-100%);
+        }
+
+        .opcao {
             display: block;
             background-color: #ffb6c1;
             color: white;
@@ -43,17 +61,17 @@
             text-align: left;
         }
 
-        .option:hover {
+        .opcao:hover {
             background-color: #ff69b4;
         }
 
-        .content {
+        .conteudo {
             flex: 1;
             padding: 2em;
             background-color: #fff0f5;
         }
 
-        .content-box {
+        .caixa-conteudo {
             background-color: white;
             border: 1px solid #ddd;
             padding: 2em;
@@ -61,14 +79,14 @@
             text-align: center;
         }
 
-        .center-img {
+        .img-centralizada {
             display: block;
             margin: 0 auto 20px;
             width: 4em;
             height: 4em;
         }
 
-        .create-btn {
+        .botao-criar {
             display: block;
             margin: 20px auto;
             padding: 10px 20px;
@@ -79,7 +97,7 @@
             border-radius: 5px;
         }
 
-        .create-btn:hover {
+        .botao-criar:hover {
             background-color: #ff1493;
         }
 
@@ -93,13 +111,13 @@
             bottom: 0;
         }
 
-        .social-links a {
+        .links-sociais a {
             color: white;
             margin: 0 10px;
             text-decoration: none;
         }
 
-        .social-links a:hover {
+        .links-sociais a:hover {
             text-decoration: underline;
         }
 
@@ -109,26 +127,32 @@
                 flex-direction: column;
                 height: auto;
             }
-            .sidebar {
+            .barra-lateral {
                 width: 100%;
                 padding: 0;
             }
-            .content {
+            .conteudo {
                 padding: 1em;
             }
         }
 
         @media (max-width: 600px) {
-            .option {
+            .opcao {
                 font-size: 14px;
                 padding: 8px;
             }
-            .center-img {
+            .img-centralizada {
                 width: 3em;
                 height: 3em;
             }
-            .content-box {
+            .caixa-conteudo {
                 padding: 1em;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .barra-lateral {
+                display: none;
             }
         }
 
@@ -136,15 +160,15 @@
             header h1 {
                 font-size: 18px;
             }
-            .option {
+            .opcao {
                 font-size: 12px;
                 padding: 6px;
             }
-            .center-img {
+            .img-centralizada {
                 width: 2.5em;
                 height: 2.5em;
             }
-            .create-btn {
+            .botao-criar {
                 padding: 8px 16px;
             }
         }
@@ -152,21 +176,23 @@
 </head>
 <body>
     <header>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
         <h1>Bruniely Lemos</h1>
     </header>
     <div class="container">
-        <div class="sidebar">
-            <button class="option" onclick="showContent(1)">Biografia</button>
-            <button class="option" onclick="showContent(2)">Projeto</button>
-            <button class="option" onclick="showContent(3)">Apoiadores</button>
-            <button class="option" onclick="showContent(4)">Agenda</button>
-            <button class="option" onclick="showContent(5)">Veja Também</button>
+        <div id="barra-lateral" class="barra-lateral">
+            <button class="opcao" onclick="mostrarConteudo(1)">Biografia</button>
+            <button class="opcao" onclick="mostrarConteudo(2)">Projeto</button>
+            <button class="opcao" onclick="mostrarConteudo(3)">Apoiadores</button>
+            <button class="opcao" onclick="mostrarConteudo(4)">Agenda</button>
+            <button class="opcao" onclick="mostrarConteudo(5)">Veja Também</button>
         </div>
-        <div class="content">
-            <div id="content-1" class="content-box">
-                <img src="https://s2.glbimg.com/PI8k4HPcCxePfyrQFaN56V2obSg=/e.glbimg.com/og/ed/f/original/2021/06/28/bruniely_lemos.1.jpeg" alt="Inicio" class="center-img">
-                <h1>Bruniely Lemos: Uma Ativista Trans que Transforma Vidas</h1>
-<p>Bruniely Lemos é uma mulher trans, empreendedora, fundadora da Associação Transbordamos e embaixadora trans do Instituto Avon. Ela é uma das vozes mais importantes na luta pelos direitos e pela visibilidade das pessoas trans no Brasil, especialmente no Vale do Paraíba, onde vive e atua. Sua história de vida é marcada por desafios, superações e esperança.</p>
+        <div class="conteudo">
+            <div id="conteudo-1" class="caixa-conteudo">
+                <img src="https://s2.glbimg.com/PI8k4HPcCxePfyrQFaN56V2obSg=/e.glbimg.com/og/ed/f/original/2021/06/28/bruniely_lemos.1.jpeg" alt="Inicio" class="img-centralizada">
+                
+                <h1>Bruniely Lemos</h1>
+<p><h3>Uma Ativista Trans que Transforma Vidas</h3>Bruniely Lemos é uma mulher trans, empreendedora, fundadora da Associação Transbordamos e embaixadora trans do Instituto Avon. Ela é uma das vozes mais importantes na luta pelos direitos e pela visibilidade das pessoas trans no Brasil, especialmente no Vale do Paraíba, onde vive e atua. Sua história de vida é marcada por desafios, superações e esperança.</p>
 <p>Bruniely nasceu em São José dos Campos, em 1992. Cresceu no bairro Vila Cristina na região norte da cidade. Desde cedo, ela percebeu que era diferente dos outros meninos. Sua voz era mais fina, seus gestos mais afeminados e sua identidade de gênero não correspondia ao seu sexo biológico. Por isso, ela sofreu bullying na escola e na rua, sendo excluída por seus colegas.</p>
 <p>Um dos episódios mais traumáticos que ela viveu foi aos seis anos, quando um grupo de crianças vendou seus olhos e a levou para o parquinho, onde abaixaram suas calças e a empurraram para um formigueiro. Ela saiu machucada e assustada, sem entender o motivo de tanta crueldade.</p>
 <p>Em casa, as coisas também não eram fáceis. Seu pai era dependente químico e violentava sua mãe. Eles eram muito religiosos e não aceitavam a forma como Bruniely se expressava.</p>
@@ -196,53 +222,42 @@
 <p>A presença e a atuação de Bruniely Lemos em diversos eventos e a sua visibilidade na mídia são fundamentais para a luta pela inclusão e pelos direitos da população trans no Brasil e no mundo. Já no estado de São Paulo, ela atua como membro do Conselho Estadual da População LGBTQIA+ no segmento de Travestis e Transexuais, representando os 39 municípios do Vale do Paraíba.</p>
 <p>Sem dúvidas, Bruniely Lemos é uma verdadeira potência que dedica sua vida em prol da vida de outras pessoas. Bruniely é um exemplo de resiliência, coragem e esperança. Ela transformou sua dor em amor e sua luta em inspiração. Ela é uma ativista trans que transborda vida, beleza e alegria. Vamos receber com muita alegria, animação e felicidade, faz muito barulho para receber: Bruniely Lemos!</p>
 
-                <p>...</p>
-                <button onclick="location.href='https://www.instagram.com/bruniellylemos/?utm_source=ig_web_button_share_sheet'" class="create-btn">INSTAGRAM</button>
+                <button onclick="location.href='https://www.instagram.com/bruniellylemos/?utm_source=ig_web_button_share_sheet'" class="botao-criar">INSTAGRAM</button>
             </div>
-            <div id="content-2" class="content-box" style="display: none;">
-                <img src="../imgs/img2.jpg" alt="Opção 2" class="center-img">
-                <p><H3>Projeto de Campanha</H3><br>projeto...<br><br></p>
-                <button onclick="location.href='rota2.html'" class="create-btn">Botão</button>
-            </div>
-            <div id="content-3" class="content-box" style="display: none;">
-                <img src="../imgs/img3.png" alt="Opção 3" class="center-img">
-                <p>Descrição para a opção 3 com 800 caracteres...</p>
-                <button onclick="location.href='rota3.html'" class="create-btn">Botão</button>
-            </div>
-            <div id="content-4" class="content-box" style="display: none;">
-                <img src="../imgs/img4.jpg" alt="Opção 4" class="center-img">
-                <p>Descrição para a opção 4 com 800 caracteres...</p>
-                <button onclick="location.href='rota4.html'" class="create-btn">Botão</button>
-            </div>
-            <div id="content-5" class="content-box" style="display: none;">
-                <img src="img5.jpg" alt="Opção 5" class="center-img">
-                <p>Descrição para a opção 5 com 800 caracteres...</p>
-                <button onclick="location.href='rota5.html'" class="create-btn">Botão</button>
-            </div>
+            <!-- Outros conteúdos (conteudo-2, conteudo-3, etc.) -->
         </div>
     </div>
     <footer>
         <p>&copy; 2024 Bruniely Lemos. Siga-nos nas redes sociais!</p>
-        <div class="social-links">
-            <a href="https://br.linkedin.com/in/bruniely-lemos-5148271b4">Linkdin</a> | 
+        <div class="links-sociais">
+            <a href="https://br.linkedin.com/in/bruniely-lemos-5148271b4">LinkedIn</a> | 
             <a href="https://www.instagram.com/bruniellylemos/?utm_source=ig_web_button_share_sheet">Instagram</a> | 
             <a href="https://www.facebook.com/bruniely.lemos.7">Facebook</a>
         </div>
     </footer>
     <script>
-        function showContent(option) {
-    // Esconde todas as caixas de conteúdo
-    var contentBoxes = document.querySelectorAll('.content-box');
-    contentBoxes.forEach(function(box) {
-        box.style.display = 'none';
-    });
+        function mostrarConteudo(opcao) {
+            // Esconde todas as caixas de conteúdo
+            var caixasConteudo = document.querySelectorAll('.caixa-conteudo');
+            caixasConteudo.forEach(function(box) {
+                box.style.display = 'none';
+            });
 
-    // Mostra a caixa de conteúdo correspondente à opção clicada
-    var selectedContent = document.getElementById('content-' + option);
-    if (selectedContent) {
-        selectedContent.style.display = 'block';
-    }
-}
+            // Mostra a caixa de conteúdo correspondente à opção clicada
+            var conteudoSelecionado = document.getElementById('conteudo-' + opcao);
+            if (conteudoSelecionado) {
+                conteudoSelecionado.style.display = 'block';
+            }
+        }
+
+        function toggleMenu() {
+            var menu = document.getElementById('barra-lateral');
+            if (menu.style.display === 'block' || menu.style.display === '') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'block';
+            }
+        }
     </script>
 </body>
 </html>
