@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto: Sistema de Biometria - ONG Transbordamos</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+    --primary-color: #6a1b9a; /* Purple */
+    --secondary-color: #f48fb1; /* Pink */
+    --text-color: #333;
+    --background-color: #f3e5f5; /* Light purple */
+    --card-background: #fff;
+    --border-color: #ddd;
+    --header-footer-bg: #4a148c; /* Darker Purple */
+    --header-footer-text: #fff;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+header {
+    background-color: var(--header-footer-bg);
+    color: var(--header-footer-text);
+    padding: 1rem 0;
+    text-align: center;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+section {
+    margin-bottom: 2.5rem;
+}
+
+h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+h3 {
+    color: var(--secondary-color);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+h4 {
+    color: var(--primary-color);
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+
+p, ul, ol {
+    margin-bottom: 1rem;
+}
+
+ul, ol {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+ul ul, ol ol {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+strong {
+    font-weight: 700;
+}
+
+code {
+    background-color: #eee;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9em;
+}
+
+pre.mermaid {
+    background-color: #f9f9f9;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+th, td {
+    border: 1px solid var(--border-color);
+    padding: 0.8rem 1rem;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background-color: var(--primary-color);
+    color: var(--header-footer-text);
+    font-weight: 700;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #eef;
+}
+
+hr {
+    border: none;
+    border-top: 1px dashed var(--border-color);
+    margin: 2.5rem 0;
+}
+
+footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1rem 0;
+    background-color: var(--header-footer-bg);
+    color: var(--header-footer-text);
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    main {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+
+    header h1 {
+        font-size: 1.6rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+     h4 {
+        font-size: 1.1rem;
+    }
+
+    table, th, td {
+        font-size: 0.9rem;
+    }
+
+    th, td {
+       padding: 0.5rem 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+     header h1 {
+        font-size: 1.4rem;
+    }
+
+     main {
+        padding: 1rem;
+        margin: 0.5rem;
+    }
+
+    table {
+       display: block;
+       overflow-x: auto; /* Enable horizontal scrolling for tables */
+       white-space: nowrap;
+    }
+}
+
+
+  </style>
+    <script type="importmap">
+        {
+          "imports": {
+            "mermaid": "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs"
+          }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Projeto: Sistema de Biometria para a ONG Transbordamos</h1>
+    </header>
+    <main>
+        <section id="introducao">
+            <h2>1. Introdução</h2>
+            <section id="objetivo">
+                <h3>1.1. Objetivo</h3>
+                <p>Desenvolver um sistema de cadastro e autenticação por biometria (impressão digital) para a ONG Transbordamos, facilitando a organização de eventos, cursos, apoio médico e psicológico para a comunidade LGBTQIAPN+.</p>
+            </section>
+            <section id="justificativa">
+                <h3>1.2. Justificativa</h3>
+                <p>A necessidade surgiu durante o <strong>CapacitaTrans</strong>, onde identificamos a dificuldade em gerenciar presenças e emitir certificados manualmente. A solução proposta automatiza esse processo, garantindo maior segurança e eficiência.</p>
+            </section>
+            <section id="publico">
+                <h3>1.3. Público-Alvo</h3>
+                <ul>
+                    <li>Pessoas trans e não-binárias cadastradas na ONG.</li>
+                    <li>Administradores da ONG (gestão de eventos e certificados).</li>
+                    <li>Profissionais de saúde (médicos, psicólogos) vinculados ao projeto.</li>
+                </ul>
+            </section>
+        </section>
+
+        <hr>
+
+        <section id="escopo">
+            <h2>2. Escopo do Projeto</h2>
+            <section id="funcionalidades">
+                <h3>2.1. Funcionalidades Principais</h3>
+                <ul>
+                    <li>✅ <strong>Cadastro de Usuários</strong>
+                        <ul>
+                            <li>Nome, gênero, tratamento (ele/ela/elu/outro), RG, CPF, data de nascimento e biometria.</li>
+                        </ul>
+                    </li>
+                    <li>✅ <strong>Autenticação por Biometria</strong>
+                        <ul>
+                            <li>Uso do sensor de impressão digital do celular ou leitor externo para registro de presença.</li>
+                        </ul>
+                    </li>
+                    <li>✅ <strong>Gestão de Eventos</strong>
+                        <ul>
+                            <li>Criação, edição e exclusão de eventos.</li>
+                            <li>Registro automático de presença via biometria.</li>
+                        </ul>
+                    </li>
+                    <li>✅ <strong>Emissão de Certificados</strong>
+                        <ul>
+                            <li>Geração automática de PDF.</li>
+                            <li>Envio por e-mail.</li>
+                        </ul>
+                    </li>
+                    <li>✅ <strong>Apoio Médico e Psicológico</strong>
+                        <ul>
+                            <li>Cadastro de profissionais.</li>
+                            <li>Agendamento de consultas (opcional).</li>
+                        </ul>
+                    </li>
+                    <li>✅ <strong>Painel Administrativo</strong>
+                        <ul>
+                            <li>Acesso restrito por biometria.</li>
+                            <li>Relatórios de presença e certificados emitidos.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            <section id="requisitos-nao-funcionais">
+                <h3>2.2. Requisitos Não Funcionais</h3>
+                <ul>
+                    <li><strong>Segurança</strong>: Dados protegidos (LGPD).</li>
+                    <li><strong>Responsividade</strong>: Funcionamento em Android.</li>
+                    <li><strong>Escalabilidade</strong>: Hospedagem em Render (free tier inicial).</li>
+                </ul>
+            </section>
+        </section>
+
+        <hr>
+
+        <section id="tecnologias">
+            <h2>3. Tecnologias</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Área</th>
+                        <th>Tecnologia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Frontend (App)</strong></td>
+                        <td>Flutter (com <code>local_auth</code> para biometria)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Backend (API)</strong></td>
+                        <td>FastAPI (Python)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Banco de Dados</strong></td>
+                        <td>PostgreSQL (Supabase ou Render)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Geração de PDF</strong></td>
+                        <td>ReportLab ou WeasyPrint</td>
+                    </tr>
+                    <tr>
+                        <td><strong>E-mail</strong></td>
+                        <td>SendGrid ou SMTP do Gmail</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hospedagem</strong></td>
+                        <td>Render (Free Tier)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <hr>
+
+        <section id="arquitetura">
+            <h2>4. Arquitetura do Sistema</h2>
+            <section id="fluxograma">
+                <h3>4.1. Fluxograma</h3>
+                <pre class="mermaid">
+graph TD
+    A[Usuário abre app] --> B[Cadastro ou Login]
+    B --> C[Registro de Digital]
+    C --> D[Backend valida e armazena]
+    D --> E[Participação em Eventos]
+    E --> F[Biometria para presença]
+    F --> G[Geração de Certificado]
+    G --> H[Envio por E-mail]
+                </pre>
+            </section>
+            <section id="componentes">
+                <h3>4.2. Componentes</h3>
+                <h4>Frontend (Flutter)</h4>
+                <ul>
+                    <li>Telas: Cadastro, Perfil, Eventos, Apoios, Administração.</li>
+                    <li>Bibliotecas: <code>local_auth</code> (biometria), <code>dio</code> (API), <code>pdf_viewer</code>.</li>
+                </ul>
+                <h4>Backend (FastAPI)</h4>
+                <ul>
+                    <li>Endpoints:</li>
+                    <ul>
+                        <li><code>/usuarios</code> (CRUD).</li>
+                        <li><code>/eventos</code> (gestão).</li>
+                        <li><code>/presenca</code> (registro biométrico).</li>
+                        <li><code>/certificados</code> (PDF e e-mail).</li>
+                    </ul>
+                </ul>
+                <h4>Banco de Dados (PostgreSQL)</h4>
+                <ul>
+                    <li>Tabelas: <code>usuarios</code>, <code>eventos</code>, <code>presencas</code>, <code>certificados</code>, <code>apoios</code>.</li>
+                </ul>
+            </section>
+        </section>
+
+        <hr>
+
+        <section id="cronograma">
+            <h2>5. Cronograma</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fase</th>
+                        <th>Duração</th>
+                        <th>Entregáveis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Planejamento</strong></td>
+                        <td>1 semana</td>
+                        <td>Documentação e protótipos</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Desenvolvimento</strong></td>
+                        <td>6 semanas</td>
+                        <td>App MVP + API funcional</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Testes</strong></td>
+                        <td>2 semanas</td>
+                        <td>Validação de biometria e certificados</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Deploy</strong></td>
+                        <td>1 semana</td>
+                        <td>Hospedagem no Render + APK Android</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <hr>
+
+        <section id="riscos">
+            <h2>6. Riscos e Mitigação</h2>
+             <table>
+                <thead>
+                    <tr>
+                        <th>Risco</th>
+                        <th>Solução</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sensor biométrico não funcionar</td>
+                        <td>Usar fallback com PIN ou leitor externo</td>
+                    </tr>
+                    <tr>
+                        <td>Problemas na geração de certificados</td>
+                        <td>Testar com múltiplos templates PDF</td>
+                    </tr>
+                    <tr>
+                        <td>Baixa adesão ao cadastro</td>
+                        <td>Campanhas de conscientização na ONG</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <hr>
+
+        <section id="orcamento">
+            <h2>7. Orçamento</h2>
+            <ul>
+                <li><strong>Desenvolvimento</strong>: 3 meses (equipe de 2 devs).</li>
+                <li><strong>Hospedagem</strong>: Render (free tier inicial).</li>
+                <li><strong>Domínio/Certificado SSL</strong>: ~R$ 50/ano.</li>
+            </ul>
+        </section>
+
+        <hr>
+
+        <section id="equipe">
+            <h2>8. Equipe</h2>
+            <ul>
+                <li><strong>Dev Frontend</strong>: Flutter (Android).</li>
+                <li><strong>Dev Backend</strong>: Python (FastAPI).</li>
+                <li><strong>Designer UX/UI</strong>: Protótipos Figma.</li>
+            </ul>
+        </section>
+
+        <hr>
+
+        <section id="proximos-passos">
+            <h2>9. Próximos Passos</h2>
+            <ol>
+                <li>Validar protótipos com a ONG.</li>
+                <li>Desenvolver MVP em 6 semanas.</li>
+                <li>Testar em grupo piloto (20 usuários).</li>
+                <li>Deploy oficial após ajustes.</li>
+            </ol>
+        </section>
+
+        <hr>
+
+         <section id="observacoes">
+            <h2>📌 Observações Finais:</h2>
+            <ul>
+                <li>O projeto prioriza <strong>privacidade</strong> (não armazena imagens da digital, apenas hash).</li>
+                <li>Pode ser expandido para <strong>Web</strong> no futuro.</li>
+                <li>Integração com <strong>WhatsApp</strong> para notificações é um plus.</li>
+            </ul>
+            <h2>🚀 Entrega Esperada:</h2>
+            <ul>
+                <li><strong>App Android</strong> (APK).</li>
+                <li><strong>API no Render</strong>.</li>
+                <li><strong>Manual do Administrador</strong>.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>Documento gerado em <span id="generation-date"></span></p>
+    </footer>
+
+    <script type="module">
+        import mermaid from 'mermaid';
+
+        mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+
+        // Optional: Add generation date
+        const dateSpan = document.getElementById('generation-date');
+        if (dateSpan) {
+            dateSpan.textContent = new Date().toLocaleDateString('pt-BR');
+        }
+    </script>
+</body>
+</html>
